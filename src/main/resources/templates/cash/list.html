@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>현금 관리</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>현금 관리</h2>
+    <table class="table" style="margin-top: 10px;">
+        <thead>
+        <tr>
+            <th>현금ID</th>
+            <th>현금 이름</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr th:each="cash : ${cashList}">
+            <td th:text="${cash.cashId}"></td>
+            <td th:text="${cash.cashName}"></td>
+            <td>
+                <form th:action="@{/cash/delete}" method="post">
+                    <input class="btn btn-danger" type="submit" value="삭제"/>
+                    <input type="hidden" name="cashId" th:value="${cash.cashId}"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <a class="btn btn-default" href="/cash/regist">등록</a>
+</div>
+</body>
+</html>

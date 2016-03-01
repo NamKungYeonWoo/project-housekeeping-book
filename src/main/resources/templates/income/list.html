@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>수입 구분 관리</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>수입 구분 관리</h2>
+    <table class="table" style="margin-top: 10px;">
+        <thead>
+        <tr>
+            <th>수입 구분 ID</th>
+            <th>수입 구분 이름</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr th:each="income : ${incomeList}">
+            <td th:text="${income.incomeId}"></td>
+            <td th:text="${income.incomeName}"></td>
+            <td>
+                <form th:action="@{/income/delete}" method="post">
+                    <input class="btn btn-danger" type="submit" value="삭제"/>
+                    <input type="hidden" name="incomeId" th:value="${income.incomeId}"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <a class="btn btn-default" href="/income/regist">등록</a>
+</div>
+</body>
+</html>

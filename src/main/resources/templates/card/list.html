@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>카드 관리</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>카드 관리</h2>
+    <table class="table" style="margin-top: 10px;">
+        <thead>
+        <tr>
+            <th>카드 ID</th>
+            <th>카드 이름</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr th:each="card : ${cardList}">
+            <td th:text="${card.cardId}"></td>
+            <td th:text="${card.cardName}"></td>
+            <td>
+                <form th:action="@{/card/delete}" method="post">
+                    <input class="btn btn-danger" type="submit" value="삭제"/>
+                    <input type="hidden" name="cashId" th:value="${card.cashId}"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <a class="btn btn-default" href="/cash/regist">등록</a>
+</div>
+</body>
+</html>

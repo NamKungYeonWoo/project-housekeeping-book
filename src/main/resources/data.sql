@@ -1,0 +1,2 @@
+-- 사용자 추가
+INSERT INTO USERS VALUES ('으닝', '$2a$10$T4tEOQEVG0bbhTvwGR.b4Ob1z8Yc.LWHBhVUWM2q.L2M0kpRO1mr.');

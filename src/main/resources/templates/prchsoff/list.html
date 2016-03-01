@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>구매처 관리</title>
+</head>
+<body ng-controller="PrchsoffListController">
+<div layout:fragment="content">
+    <script type="text/javascript" src="/js/prchsoff/PrchsoffService.js"
+            th:src="@{/js/prchsoff/PrchsoffService.js}"></script>
+    <script type="text/javascript" src="/js/prchsoff/PrchsoffListController.js"
+            th:src="@{/js/prchsoff/PrchsoffListController.js}"></script>
+    <h2>구매처 등록</h2>
+    <h2>구매처 목록</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>구매처ID</th>
+            <th>구매처 이름</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr ng-repeat="prchsoff : prchsoffList">
+            <td>{{ prchsoff.prchsoffId }}</td>
+            <td>{{ prchsoff.prchsoffName }}</td>
+            <td>
+                <input class="btn btn-danger" type="submit" value="삭제"/>
+                <input type="hidden" name="prchsoffId"/>
+            </td>
+        </tr>
+    </table>
+
+    <a class="btn btn-default" href="/prchsoff/regist">등록</a>
+</div>
+</body>
+</html>

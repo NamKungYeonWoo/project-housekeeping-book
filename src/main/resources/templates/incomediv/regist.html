@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>수입 구분 관리</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form th:action="@{/incomeDiv/create}" th:object="${incomeDivDto}" class="form-horizontal" method="post">
+        <fieldset>
+            <legend>수입 구분 정보 작성</legend>
+            <div class="form-group" th:classappend="${#fields.hasErrors('incomeDivName')}? 'has-error has-feedback'">
+                <label for="incomeDivName" class="col-sm-2 control-label">수입 구분 이름</label>
+
+                <div class="col-sm-10">
+                    <input type="text" id="incomeDivName" name="incomeDivName" th:field="*{incomeDivName}"
+                           class="form-control" value="홍" autofocus="autofocus "/>
+                        <span th:if="${#fields.hasErrors('incomeDivName')}" th:errors="*{incomeDivName}"
+                              class="help-block">error!</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">작성</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
